@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block main %}
+</div>
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Payment Information</h4>
+            <p>Here are the details of your order:</p>
+            <h5
+            style="color: {% if transaction.status == 'CAPTURED' %} green {% else %} red {% endif %}"
+            >
+                Status: {{ transaction.status }}
+            </h5>
+            <p>
+                <strong>Date: </strong>{{ transaction.date }}<br />
+                <strong>Transaction ID: </strong>{{ transaction.transactionId }}<br />
+                <strong>Tracking ID: </strong>{{ transaction.trackId }}<br />
+                <strong>Payment ID: </strong>{{ transaction.paymentId }}<br />
+                <strong>Total: </strong>{{ transaction.amount }}<br />
+                <strong>Phone: </strong>{{ transaction.renter.phone }}<br />
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

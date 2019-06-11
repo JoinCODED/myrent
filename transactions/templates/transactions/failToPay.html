@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block main %}
+</div>
+<section data-section-id="2" data-component-id="15_05_awz" data-category="admin" class="py-4">
+                <div class="container-fluid">
+                  <h2 class="mb-4" data-config-id="header">Failed to pay</h2>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Id #</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Phone Number</th>
+                          <th scope="col">Rent</th>
+                          <th class="text-center" scope="col">Status</th>
+                          <th class="text-center" scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody data-config-id="table_05">
+                        {% for renter in renters %}
+                        <tr>
+                          <td>#{{renter.id}}</td>
+                          <td>{{renter.name}}</td>
+                          <td>{{renter.phone}}</td>
+                          <td>{{renter.amount}}</td>
+                          <td class="text-center"><span class="badge badge-danger">UnPaid</span></td>
+                          <td class="text-center">
+                                        <a  href={% url 'edit' id=renter.id %} class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                        <a  href={% url 'details' id=renter.id %} class="btn btn-secondary"><i class="fa fa-info-circle"></i></a>
+                                        <a  href={% url 'delete' id=renter.id %} class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                          </td>
+                          {% endfor %}
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+
+{% endblock %}
+
+

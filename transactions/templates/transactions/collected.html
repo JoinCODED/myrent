@@ -1,0 +1,42 @@
+
+
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block main %}
+</div>
+<section data-section-id="2" data-component-id="15_05_awz" data-category="admin" class="py-4">
+                <div class="container-fluid">
+                  <h2 class="mb-4" data-config-id="header">Collection</h2>
+                  <h3 class="mb-4" >Total: {{total}} K.D</h3>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Id #</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Phone Number</th>
+                          <th scope="col">Rent</th>
+                          <th class="text-center" scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody data-config-id="table_05">
+                        {% for transaction in transactions %}
+                        <tr>
+                          <td>#{{transaction.renter.id}}</td>
+                          <td>{{transaction.renter.name}}</td>
+                          <td>{{transaction.renter.phone}}</td>
+                          <td>{{transaction.renter.amount}}</td>
+                          <td class="text-center">
+                                        <a  href={% url 'edit' id=transaction.renter.id %} class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                        <a  href={% url 'details' id=transaction.renter.id %} class="btn btn-secondary"><i class="fa fa-info-circle"></i></a>
+                                        <a  href={% url 'delete' id=transaction.renter.id %} class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                          </td>
+                          {% endfor %}
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+
+{% endblock %}
+
+

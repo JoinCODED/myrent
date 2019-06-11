@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block main %}
+</div>
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Renter Information</h4>
+      <ul class="list-group">
+          <li class="list-group-item">
+        <a href={% url 'transactions' id=renter.id %} class="btn btn-warning">Transaction List</a>
+        <a href={% url 'edit' id=renter.id %} class="btn btn-primary">Edit</a>
+        <a href={% url 'delete' id=renter.id %} class="btn btn-danger">Delete</a>
+        </li>
+        <li class="list-group-item">
+          <p class="text-primary">
+            Id: <span class="text-secondary">{{ renter.id }}</span>
+          </p>
+        </li>
+        <li class="list-group-item">
+          <p class="text-primary">
+            Phone #: <span class="text-secondary">{{ renter.phone }}</span>
+          </p>
+        </li>
+        <li class="list-group-item">
+          <p class="text-primary">
+            Name: <span class="text-secondary">{{ renter.name }}</span>
+          </p>
+        </li>
+        <li class="list-group-item">
+          <p class="text-primary">
+            Rent: <span class="text-secondary">{{ renter.amount }}</span>
+          </p>
+        </li>
+        <li class="list-group-item">
+          <p class="text-primary">
+            Address Name:
+            <span class="text-secondary">{{ renter.adressName }}</span>
+          </p>
+        </li>
+        <li class="list-group-item">
+          <p class="text-primary">
+            Address line 1:
+            <span class="text-secondary">{{ renter.address1 }}</span>
+          </p>
+        </li>
+        <li class="list-group-item">
+          <p class="text-primary">
+            Address line 2:
+            <span class="text-secondary">{{ renter.address2 }}</span>
+          </p>
+        </li>
+        <li class="list-group-item">
+          <p class="text-primary">
+            ZIP / Postal Code:
+            <span class="text-secondary">{{ renter.zip_code }}</span>
+          </p>
+        </li>
+        <li class="list-group-item">
+          <p class="text-primary">
+            City: <span class="text-secondary">{{ renter.city }}</span>
+          </p>
+        </li>
+        <li class="list-group-item">
+          <p class="text-primary">
+            Country: <span class="text-secondary">{{ renter.country }}</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

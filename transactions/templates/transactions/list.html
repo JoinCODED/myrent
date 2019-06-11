@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block main %}
+</div>
+<section data-section-id="2" data-component-id="15_05_awz" data-category="admin" class="py-4">
+                <div class="container-fluid">
+                  <h2 class="mb-4" data-config-id="header">Transactions</h2>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Status</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Phone Number</th>
+                          <th scope="col">Rent</th>
+                          <th class="text-center" scope="col">Date</th>
+                          <th class="text-center" scope="col">Tap ID</th>
+                        </tr>
+                      </thead>
+                      <tbody data-config-id="table_05">
+                        {% for transaction in transactions %}
+                        <tr>
+                          <td>{% if transaction.status == 'CAPTURED' %} <span class="badge badge-success">Success</span> {% else %} <span class="badge badge-danger">Failed</span> {% endif %}</td>
+                          <td>{{transaction.renter.name}}</td>
+                          <td>{{transaction.renter.phone}}</td>
+                          <td>{{transaction.amount}}</td>
+                          <td class="text-center">{{transaction.date | date}}</td>
+                          <td class="text-center">
+                            {{transaction.tapId}}
+                          </td>
+                          {% endfor %}
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+
+{% endblock %}
