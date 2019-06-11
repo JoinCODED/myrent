@@ -1,0 +1,48 @@
+{%load static%} <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <title>MyRent</title>
+  </head>
+  <body>
+    <div id="wrapper" class={%if request.user.is_authenticated %} "toggled" {%endif%}>
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand"><h1 class="text-center text-light"> MyRent </h1></li>
+          {% if request.user.is_authenticated %}
+          <li><a href={% url 'list' %}>Dashboard</a></li>
+          <li><a href={% url 'add' %}>Add Renter</a></li>
+          <li><a href={% url 'newTransactions' %}>Transactions</a></li>
+          <li><a href={% url 'failToPay' %}>Failed to pay</a></li>
+          <li><a href={% url 'collected' %}>Collected This Month</a></li>
+          <li><a href={% url 'logout' %}>{{request.user.username}} - Logout</a></li>
+          {% else %}
+          <li><a href={% url 'signup' %}>Signup</a></li>
+          <li><a href={% url 'login' %}>Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div id="page-content-wrapper">
+        <div class="container-fluid">{% block main %} {% endblock%}</div>
+      </div>
+    </div>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+  </body>
+</html>

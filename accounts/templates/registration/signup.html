@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block main %}
+
+<section
+  data-section-id="1"
+  data-component-id="12_02_awz"
+  data-category="sign-in"
+>
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <form class="col-md-5 col-lg-4" method="post">
+        <label class="sr-only" for="input1-signin-02">Email</label>
+        <input
+          class="form-control my-3 bg-light"
+          id="id_username"
+          type="text"
+          name="username"
+          maxlength="150"
+          autofocus
+          required
+          placeholder="Username"
+        />
+        <label class="sr-only" for="input3-signin-02">Password</label>
+        <input
+          class="form-control my-3 bg-light"
+          id="id_password1"
+          type="password"
+          required
+          name="password1"
+          placeholder="Password"
+          aria-autocomplete="list"
+        />
+        <label class="sr-only" for="input3-signin-02">Confirm Password</label>
+        <input
+          class="form-control my-3 bg-light"
+          id="id_password2"
+          type="password"
+          name="password2"
+          placeholder="Confirm Password"
+          required
+        />
+        <div class="d-flex">
+          <a
+          class="btn btn-outline-primary btn-block py-2 mr-3"
+          href={% url 'login' %}
+          data-config-id="secondary-action"
+          >
+          Sign In!
+        </a>
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
+        
+        <button
+        class="btn btn-primary btn-block py-2 mt-0"
+        type="submit"
+            data-config-id="primary-action"
+          >
+            Sign up!
+      </button>
+        </div>
+        <p class="text-secondary text-muted mt-3" data-config-id="terms">
+          By signing in you agree with the <mark>Terms and Conditions</mark> and
+          <mark>Privacy Policy</mark>.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
